@@ -204,8 +204,9 @@ def get_data(file_name: str) -> any:
 
 
 def render():
-    st.set_page_config(layout="wide")
-    st.title("Appraise My DangPack")
+    title = "Appraise My DangPack"
+    st.set_page_config(page_title=title, layout="wide")
+    st.title(title)
     st.caption("*only contains cards which have been traded for other cards")
     cards_tab, trades_tab, compare_tab, methodology_tab = st.tabs(["Cards", "Trades", "Compare", "Methodology"])
     view = View()
