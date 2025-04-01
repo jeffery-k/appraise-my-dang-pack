@@ -3,7 +3,7 @@ import json
 
 import streamlit as st
 import pandas as pd
-from tenacity import sleep_using_event
+from millify import millify
 
 TEXT_KEY = "text"
 ITEMS_KEY = "items"
@@ -149,7 +149,7 @@ class View:
     @st.fragment
     def compare_view(self):
         st.subheader("Compare")
-        compare_section = st.columns(9)[4].empty()
+        compare_section = st.columns(9)[4].container()
         total_values = [0, 0]
         headers = ("Requested", "Offered")
         columns = st.columns(2)
@@ -161,13 +161,15 @@ class View:
 
             card_values = [list(self.values[self.card_names[name]].values())[-1] for name in selection]
             for j in range(len(selection)):
-                column.metric(selection[j], card_values[j])
+                column.metric(selection[j], millify(card_values[j]))
 
             party_value = sum(card_values)
             party_value_section.caption(header + " Value " + format(party_value, ","))
             total_values[i] = party_value
         if total_values[0] or total_values[1]:
-            compare_section.metric(NET_OFFER_GAIN_HEADER, total_values[1] - total_values[0])
+            diff = total_values[1] - total_values[0]
+            compare_section.metric(NET_OFFER_GAIN_HEADER, millify(diff))
+            compare_section.caption(format(diff, ","))
 
     @st.fragment
     def methodology_view(self):
