@@ -212,7 +212,7 @@ class View:
         for i in range(2):
             column = columns[i]
             header = headers[i]
-            selection = column.multiselect(header + " Cards", list(self.card_names.keys()))
+            selection = column.multiselect(header + " Cards", list(sorted(self.card_names.keys())))
             party_value_section = column.empty()
 
             card_values = []
