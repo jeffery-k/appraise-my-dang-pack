@@ -32,7 +32,7 @@ CARD_VALUES_FILE = "card_values.json"
 PROP_VALUES_FILE = "prop_values.json"
 PROP_MULTS_FILE = "prop_mults.json"
 CARDS_FILE = "cards.json"
-TRADES_FILE = "etl/trades.json"
+TRADES_FILE = "trades.json"
 METHODOLOGY_FILE = "methodology.json"
 
 TITLE_HEADER = "Title"
